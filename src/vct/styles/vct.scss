@@ -1,0 +1,44 @@
+/**
+ * @description vct预设样式
+ */
+@import "./normalize.scss";
+@import "./light.scss";
+@import "./fast.scss";
+
+@mixin base-scrollbar {
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba($base-menu-background, 0.1);
+    border: 3px solid transparent;
+    border-radius: 7px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: rgba($base-menu-background, 0.2);
+  }
+}
+body,
+body[class*="vab-theme-"] {
+  position: relative;
+  box-sizing: border-box;
+  height: 100vh;
+  padding: 0;
+  overflow: hidden;
+  font-family: "PingFang SC", Arial, "Microsoft YaHei", sans-serif;
+  font-size: $base-font-size-default;
+  color: $base-color-black;
+  background: $base-color-background;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  #app {
+    height: 100vh;
+    overflow: auto;
+    @include base-scrollbar;
+    .vct-main {
+      transition: $base-transition;
+    }
+  }
+}
