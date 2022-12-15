@@ -15,4 +15,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.test {
+  height: 1000px;
+}
+</style>

@@ -5,16 +5,20 @@ import { isJson } from "@/utils/validate";
 import {
   collapse as _collapse,
   columnStyle,
+  fixedHeader,
   layout,
   logo,
   title,
+  showTabs,
 } from "@/config";
 
 const defaultTheme = {
   columnStyle,
+  fixedHeader,
   layout,
   logo,
   title,
+  showTabs,
 };
 
 const getLocalStorage = (key) => {
@@ -52,6 +56,11 @@ const mutations = {
   foldSideBar(state) {
     state.collapse = true;
   },
+  toggleCollapse(state) {
+    console.log(1);
+    state.collapse = !state.collapse;
+    localStorage.setItem("collapse", `{"collapse":${state.collapse}}`);
+  },
   resetTheme(state) {
     state.theme = { ...defaultTheme };
     localStorage.removeItem("theme");
@@ -64,6 +73,9 @@ const actions = {
   },
   foldSideBar({ commit }) {
     commit("foldSideBar");
+  },
+  toggleCollapse({ commit }) {
+    commit("toggleCollapse");
   },
   resetTheme({ commit }) {
     commit("resetTheme");

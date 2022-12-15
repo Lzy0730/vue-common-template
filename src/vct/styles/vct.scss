@@ -3,7 +3,7 @@
  */
 @import "./normalize.scss";
 @import "./light.scss";
-@import "./fast.scss";
+@import "./transition.scss";
 
 @mixin base-scrollbar {
   &::-webkit-scrollbar {
@@ -19,26 +19,567 @@
     background-color: rgba($base-menu-background, 0.2);
   }
 }
-body,
-body[class*="vab-theme-"] {
-  position: relative;
-  box-sizing: border-box;
-  height: 100vh;
-  padding: 0;
-  overflow: hidden;
-  font-family: "PingFang SC", Arial, "Microsoft YaHei", sans-serif;
-  font-size: $base-font-size-default;
-  color: $base-color-black;
-  background: $base-color-background;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  #app {
+
+.vct-layout-header,
+[class*="-bar-container"] {
+  transition: $base-transition;
+
+  * {
+    transition: $base-transition;
+  }
+}
+html {
+  body,
+  body[class*="vct-theme-"] {
+    position: relative;
+    box-sizing: border-box;
     height: 100vh;
-    overflow: auto;
-    @include base-scrollbar;
-    .vct-main {
-      transition: $base-transition;
+    padding: 0;
+    overflow: hidden;
+    font-family: "PingFang SC", Arial, "Microsoft YaHei", sans-serif;
+    font-size: $base-font-size-default;
+    color: $base-color-black;
+    background: $base-color-background;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    #app {
+      height: 100vh;
+      overflow: auto;
+      @include base-scrollbar;
+      .vct-main {
+        transition: $base-transition;
+        .vct-app-main {
+          width: 100%;
+          padding: $base-padding;
+          overflow: hidden;
+          transition: $base-transition;
+
+          > section {
+            background: $base-color-white;
+            transition: $base-transition;
+
+            > [class*="-container"] {
+              min-height: $base-keep-alive-height;
+              padding: $base-padding;
+              background: $base-color-white;
+              transition: $base-transition;
+            }
+          }
+        }
+      }
     }
   }
+
+  * {
+    box-sizing: border-box;
+    outline: none !important;
+    @include base-scrollbar;
+  }
+
+  /*a标签 */
+  a {
+    color: $base-color-blue;
+    text-decoration: none;
+  }
+
+  /*图片 */
+  img {
+    object-fit: cover;
+
+    &[src=""],
+    &:not([src]) {
+      opacity: 0;
+    }
+  }
+
+  /* el-button按钮 */
+  .el-button {
+    [class*="ri-"] {
+      margin-right: 3px;
+      font-size: 12px;
+      vertical-align: -1.8px;
+    }
+
+    [class*="el-icon-"] + span {
+      margin-left: 3px;
+    }
+  }
+
+  span + span,
+  a + a,
+  span + a {
+    .el-button {
+      margin-left: 10px;
+    }
+  }
+
+  .el-drawer__wrapper {
+    outline: none !important;
+
+    * {
+      outline: none !important;
+    }
+  }
+
+  /* v-modal遮罩 */
+  .v-modal {
+    z-index: $base-z-index;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0.6;
+    //backdrop-filter: blur(10px);
+  }
+
+  /* el-image-viewer遮罩 */
+  .el-image-viewer__mask {
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0.6;
+    //backdrop-filter: blur(10px);
+  }
+
+  /* el-loading-mask遮罩 */
+  .el-loading-mask {
+    z-index: $base-z-index - 10 !important;
+
+    &.is-fullscreen {
+      z-index: $base-z-index - 10 !important;
+    }
+  }
+
+  /* el-scrollbar滚动条 */
+  .el-scrollbar {
+    height: 100%;
+
+    &__bar {
+      z-index: 999;
+    }
+
+    &__thumb {
+      background-color: rgba($base-menu-background, 0.1);
+
+      &:hover {
+        background-color: rgba($base-menu-background, 0.2);
+      }
+    }
+  }
+
+  /* el-form表单 */
+  .el-form--label-top {
+    .el-form-item__label {
+      padding: 0;
+    }
+  }
+
+  .el-form-item__label {
+    padding: 0 10px 0 0;
+  }
+
+  .el-range-editor--small {
+    .el-range__icon,
+    .el-range__close-icon {
+      line-height: 23.5px;
+    }
+  }
+
+  /*  el-badge */
+  .el-badge__content {
+    border: 0;
+  }
+
+  /* el-tag */
+  .el-tag + .el-tag {
+    margin-left: 10px;
+  }
+
+  /*  .el-page-header */
+  .el-page-header {
+    margin: 0 0 $base-margin 0;
+  }
+
+  /* el-alert */
+  .el-alert {
+    margin: 0 0 $base-margin 0;
+
+    &--success.is-light {
+      color: $base-color-green;
+      background-color: mix($base-color-white, $base-color-green, 90%);
+      border: 1px solid $base-color-green;
+
+      i {
+        color: $base-color-green;
+      }
+    }
+
+    &--info.is-light {
+      color: $base-color-blue;
+      background-color: mix($base-color-white, $base-color-blue, 90%);
+      border: 1px solid $base-color-blue;
+
+      i {
+        color: $base-color-blue;
+      }
+    }
+
+    &--warning.is-light {
+      color: $base-color-yellow;
+      background-color: mix($base-color-white, $base-color-yellow, 90%);
+      border: 1px solid $base-color-yellow;
+
+      i {
+        color: $base-color-yellow;
+      }
+    }
+
+    &--error.is-light {
+      color: $base-color-red;
+      background-color: mix($base-color-white, $base-color-red, 90%);
+      border: 1px solid $base-color-red;
+
+      i {
+        color: $base-color-red;
+      }
+    }
+  }
+
+  /* el-dropdown-menu */
+  .el-dropdown-menu__item {
+    [class*="ri-"] {
+      margin-right: 0;
+    }
+  }
+
+  /* markdown编辑器*/
+  .editor-toolbar {
+    .no-mobile,
+    .fa-question-circle {
+      display: none;
+    }
+  }
+
+  /* el-divider间隔线 */
+  .el-divider--horizontal {
+    margin: 8px 0 $base-margin + 8px 0;
+
+    .el-divider__text {
+      display: -webkit-box;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+    }
+  }
+  /* el-table表格 */
+  .el-table {
+    .el-table__body-wrapper {
+      @include base-scrollbar;
+    }
+
+    th {
+      background: #f5f7fa;
+    }
+
+    td,
+    th {
+      position: relative;
+      box-sizing: border-box;
+
+      .cell {
+        font-size: $base-font-size-default;
+        font-weight: normal;
+        color: #606266;
+
+        .el-image {
+          width: 50px;
+          height: 50px;
+          border-radius: $base-border-radius;
+        }
+      }
+    }
+  }
+
+  /* el-pagination分页 */
+  .el-pagination {
+    margin: $base-margin 0 0 0;
+    font-weight: normal;
+    color: $base-color-black;
+    text-align: center;
+  }
+
+  /* el-menu菜单开始 */
+  .el-menu {
+    user-select: none;
+  }
+  .el-menu-item * {
+    vertical-align: bottom;
+  }
+
+  /* el-dialog、el-message-box、el-popover */
+  @media (max-width: 576px) {
+    .el-dialog,
+    .el-message-box,
+    .el-popover.el-popper {
+      width: auto !important;
+      margin: 5vw !important;
+    }
+    .vab-app-main {
+      padding: calc(#{$base-padding} - 5px) !important;
+      .el-card {
+        margin-bottom: calc(#{$base-margin} - 5px) !important;
+      }
+    }
+  }
+  /* el-card卡片 */
+  .el-card {
+    margin-bottom: $base-margin;
+
+    &__body {
+      padding: $base-padding;
+    }
+  }
+
+  /* .vab-hey-message */
+  .vab-hey-message {
+    @mixin vab-hey-message {
+      min-width: 246px;
+      padding: 15px;
+      background-color: $base-color-white;
+      border-color: $base-color-white;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+
+      .el-message__content {
+        padding-right: $base-padding;
+        color: #34495e;
+      }
+
+      .el-icon-close {
+        color: #34495e;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+
+    &-info {
+      @include vab-hey-message;
+
+      i {
+        color: $base-color-grey;
+      }
+    }
+
+    &-success {
+      @include vab-hey-message;
+
+      i {
+        color: $base-color-green;
+      }
+    }
+
+    &-warning {
+      @include vab-hey-message;
+
+      i {
+        color: $base-color-yellow;
+      }
+    }
+
+    &-error {
+      @include vab-hey-message;
+
+      i {
+        color: $base-color-red;
+      }
+    }
+  }
+
+  //flex
+  @for $copies from 1 through 12 {
+    .v-flex-#{$copies} {
+      flex: $copies;
+    }
+  }
+
+  $base-percent: 1%;
+  // 宽度百分比
+  @for $percent from 1 through 100 {
+    .v-w-#{$percent} {
+      width: $percent * $base-percent;
+    }
+  }
+
+  //高度百分比
+  @for $percent from 1 through 100 {
+    .v-h-#{$percent} {
+      height: $percent * $base-percent;
+    }
+  }
+
+  // 定义内外边距，历遍1-80
+  @for $i from 0 through 80 {
+    // 只要双数和能被5除尽的数
+    @if $i % 2 == 0 or $i % 5 == 0 {
+      // 得出：v-margin-30或者v-m-30
+      .v-margin-#{$i},
+      .v-m-#{$i} {
+        margin: $i + px !important;
+      }
+
+      // 得出：v-padding-30或者v-p-30
+      .v-padding-#{$i},
+      .v-p-#{$i} {
+        padding: $i + px !important;
+      }
+
+      // 定义上下外边距
+      .v-m-tb-#{$i} {
+        margin: $i + px 0 !important;
+      }
+      // 定义左右外边距
+      .v-m-lr-#{$i} {
+        margin: 0 $i + px !important;
+      }
+      // 定义上下内边距
+      .v-p-tb-#{$i} {
+        padding: $i + px 0 !important;
+      }
+      // 定义左右内边距
+      .v-p-lr-#{$i} {
+        padding: 0 $i + px !important;
+      }
+
+      // 自动左外边距
+      .v-m-l-auto {
+        margin-left: auto;
+      }
+
+      // 自动右外边距
+      .v-m-r-auto {
+        margin-right: auto;
+      }
+
+      @each $short, $long in l left, t top, r right, b bottom {
+        // 缩写版，结果如： v-m-l-30
+        // 定义外边距
+        .v-m-#{$short}-#{$i} {
+          margin-#{$long}: $i + px !important;
+        }
+
+        // 定义内边距
+        .v-p-#{$short}-#{$i} {
+          padding-#{$long}: $i + px !important;
+        }
+
+        // 完整版，结果如：v-margin-left-30
+        // 定义外边距
+        .v-margin-#{$long}-#{$i} {
+          margin-#{$long}: $i + px !important;
+        }
+
+        // 定义内边距
+        .v-padding-#{$long}-#{$i} {
+          padding-#{$long}: $i + px !important;
+        }
+      }
+    }
+  }
+}
+
+@for $i from 9 to 60 {
+  .v-font-#{$i} {
+    font-size: $i + px;
+  }
+  .fs-#{$i} {
+    font-size: $i + px;
+  }
+}
+.v-flex {
+  display: flex;
+  align-items: center;
+}
+.v-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+.v-flex-wrap {
+  flex-wrap: wrap;
+}
+
+.v-flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+.v-col-center {
+  align-items: center;
+}
+
+.v-col-top {
+  align-items: flex-start;
+}
+
+.v-col-bottom {
+  align-items: flex-end;
+}
+
+.v-row-center {
+  justify-content: center;
+}
+
+.v-row-left {
+  justify-content: flex-start;
+}
+
+.v-row-right {
+  justify-content: flex-end;
+}
+
+.v-row-between {
+  justify-content: space-between;
+}
+
+.v-row-around {
+  justify-content: space-around;
+}
+
+.v-font-bold {
+  font-weight: bold;
+}
+.v-type-info {
+  color: #909399;
+}
+//对齐
+@each $var in (left, center, right) {
+  .v-text-#{$var} {
+    text-align: $var !important;
+  }
+}
+
+@for $i from 1 through 5 {
+  .v-line-#{$i} {
+    // vue下，单行和多行显示省略号需要单独处理
+    @if $i == 1 {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    } @else {
+      display: -webkit-box !important;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-break: break-all;
+      -webkit-line-clamp: $i;
+      -webkit-box-orient: vertical !important;
+    }
+  }
+}
+.v-avatar {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 2px !important;
+}
+
+.readonly-mask {
+  pointer-events: none;
+}
+.operational {
+  pointer-events: all;
 }

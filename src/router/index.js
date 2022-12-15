@@ -2,11 +2,20 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Layout from "@/vct/layouts";
 
-import { routerMode, loginMode } from "@/config";
+import { publicPath, routerMode, loginMode } from "@/config";
 
 Vue.use(VueRouter);
 
-export const constantRoutes = [];
+export const constantRoutes = [
+  {
+    path: "/404",
+    name: "404",
+    component: () => import("@/views/404"),
+    meta: {
+      hidden: true,
+    },
+  },
+];
 
 export const asyncRoutes = [
   {
@@ -22,9 +31,29 @@ export const asyncRoutes = [
       {
         path: "/index",
         name: "Index",
-        component: () => import("../views/index.vue"),
+        component: () => import("../views/index/index.vue"),
         meta: {
+          icon: "home-3-line",
           title: "首页",
+        },
+      },
+    ],
+  },
+  {
+    path: "/vct",
+    name: "Vct",
+    component: Layout,
+    meta: {
+      title: "组件",
+      icon: "code-box-line",
+    },
+    children: [
+      {
+        path: "icon",
+        name: "Icon",
+        meta: {
+          title: "图标",
+          icon: "remixicon-line",
         },
       },
     ],
@@ -52,11 +81,9 @@ function createRouter(
   routes = loginMode ? constantRoutes : [...constantRoutes, ...asyncRoutes]
 ) {
   return new VueRouter({
-    base: process.env.BASE_URL,
+    base: publicPath,
     mode: routerMode,
-    scrollBehavior: () => ({
-      y: 0,
-    }),
+    scrollBehavior: () => ({ y: 0 }),
     routes: routes,
   });
 }

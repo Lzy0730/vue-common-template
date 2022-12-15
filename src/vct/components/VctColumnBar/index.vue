@@ -46,11 +46,11 @@
         {{ handleGroupTitle }}
       </el-divider>
       <template v-for="route in handlePartialRoutes">
-        <!-- <vab-menu
+        <vct-menu
           v-if="route.meta && !route.meta.hidden"
           :key="route.path"
           :item="route"
-        /> -->
+        />
       </template>
     </el-menu>
   </el-scrollbar>
@@ -97,7 +97,6 @@ export default {
     $route: {
       handler(route) {
         this.activeMenu = handleActivePath(route);
-        console.log(route);
         const firstMenu = route.matched[0].name;
         if (this.extra.first !== firstMenu) {
           this.extra.first = firstMenu;
@@ -212,6 +211,15 @@ export default {
     word-break: break-all;
     white-space: nowrap;
 
+    > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .vct-icon {
+        height: 20px;
+      }
+    }
     &-card {
       justify-content: center;
       height: $base-left-menu-width-min;

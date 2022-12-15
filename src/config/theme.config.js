@@ -4,8 +4,12 @@
 module.exports = {
   // 布局种类：分栏布局column
   layout: "column",
-  // 分栏风格(仅针对分栏布局column时生效)：横向风格horizontal、纵向风格vertical、卡片风格card、箭头风格arrow
+  // 分栏风格(仅针对分栏布局column时生效)：卡片风格card
   columnStyle: "card",
-  //纵向布局、常规布局、综合布局时是否默认收起左侧菜单（不支持分栏布局、横向布局）
+  // 是否固定头部固定
+  fixedHeader: true,
+  // 是否开启标签页
+  showTabs: true,
+  //是否默认收起左侧菜单
   collapse: false,
 };

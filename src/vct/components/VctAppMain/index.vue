@@ -1,8 +1,7 @@
 <template>
   <div class="vct-app-main">
     <section>
-      <router-view />
-      <!-- <vab-router-view /> -->
+      <vct-router-view />
     </section>
     <vct-footer />
   </div>

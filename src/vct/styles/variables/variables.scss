@@ -5,13 +5,13 @@
 //颜色配置
 $base-color-black: #222;
 $base-color-blue: #1890ff;
-// $base-color-green: #13ce66;
+$base-color-green: #13ce66;
 $base-color-white: #fff;
 $base-color-black: #515a6e;
-// $base-color-yellow: #ffba00;
+$base-color-yellow: #ffba00;
 // $base-color-orange: #ff6700;
-// $base-color-red: #ff4d4f;
-// $base-color-grey: rgba(0, 0, 0, 0.65);
+$base-color-red: #ff4d4f;
+$base-color-grey: rgba(0, 0, 0, 0.65);
 $base-color-background: #f6f8f9;
 
 // $base-color-text-primary: #303133;
@@ -25,9 +25,9 @@ $base-color-background: #f6f8f9;
 // $base-background-color-base: #f5f7fa;
 
 // //默认层级
-// $base-z-index: 1999;
+$base-z-index: 1999;
 // //分栏最左侧菜单背景色
-$base-column-first-menu-background: linear-gradient(to right, #282c34, #000);
+$base-column-first-menu-background: linear-gradient(to right, #282c34, #282c34);
 // //分栏菜单背景色
 $base-column-second-menu-background: #fff;
 // //分栏菜单选中背景色
@@ -51,7 +51,7 @@ $base-font-size-max: 22px;
 // //最大宽度
 // $base-main-width: 1279px;
 // //圆角
-// $base-border-radius: 2.5px;
+$base-border-radius: 2.5px;
 // //边框颜色
 // $base-border-color: #dcdfe6;
 // //输入框高度
@@ -59,7 +59,7 @@ $base-font-size-max: 22px;
 // //默认margin
 $base-margin: 20px;
 // //默认padding
-// $base-padding: 12px;
+$base-padding: 12px;
 // //默认阴影
 $base-box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 // //横向top-bar、logo、一级菜单的高度
@@ -67,9 +67,9 @@ $base-top-bar-height: 60px;
 // //纵向、综合、分栏logo的高度
 $base-logo-height: 60px;
 // //顶部nav-bar的高度
-// $base-nav-height: 60px;
+$base-nav-height: 60px;
 // //顶部标签页tabs-bar的高度
-// $base-tabs-height: 50px;
+$base-tabs-height: 50px;
 // //顶部标签页tabs-bar中每一个item的高度
 // $base-tag-item-height: 34px;
 // //菜单li标签的高度
@@ -77,13 +77,13 @@ $base-menu-item-height: 50px;
 // //app-main的高度
 // // $base-keep-alive-height: calc(100vh - #{$base-nav-height} - #{$base-tabs-height} - #{$base-padding} * 2 - 40px);
 // // $base-keep-alive-height: calc(100vh - #{$base-nav-height} - #{$base-tabs-height} - #{$base-padding} * 2);
-// $base-keep-alive-height: calc(
-//   100vh - #{$base-nav-height} - #{$base-tabs-height} - #{$base-padding} * 1 + 40px
-// );
+$base-keep-alive-height: calc(
+  100vh - #{$base-nav-height} - #{$base-tabs-height} - #{$base-padding} * 1 + 40px
+);
 // //纵向左侧导航未折叠的宽度
-$base-left-menu-width: 230px;
+$base-left-menu-width: 300px;
 // //纵向左侧导航未折叠右侧内容的宽度
-// $base-right-content-width: calc(100% - #{$base-left-menu-width});
+$base-right-content-width: calc(100% - #{$base-left-menu-width});
 // //纵向左侧导航已折叠的宽度
 $base-left-menu-width-min: 64px;
 // //纵向左侧导航已折叠右侧内容的宽度

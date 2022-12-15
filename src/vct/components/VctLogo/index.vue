@@ -62,6 +62,11 @@ export default {
 }
 .logo-container {
   &-column {
+    @include container;
+
+    height: $base-logo-height;
+    line-height: $base-logo-height;
+    text-align: center;
     .logo {
       svg,
       img {
@@ -85,6 +90,8 @@ export default {
       height: $base-logo-height;
       margin: 0;
       background: $base-column-first-menu-background;
+      color: $base-title-color;
+      font-size: 32px;
     }
 
     .title {
