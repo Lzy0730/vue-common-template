@@ -57,7 +57,6 @@ const mutations = {
     state.collapse = true;
   },
   toggleCollapse(state) {
-    console.log(1);
     state.collapse = !state.collapse;
     localStorage.setItem("collapse", `{"collapse":${state.collapse}}`);
   },
