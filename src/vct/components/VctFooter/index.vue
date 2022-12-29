@@ -1,7 +1,7 @@
 <template>
   <footer class="vct-footer">
     Copyright
-    <!-- <vab-icon icon="copyright-line" /> -->
+    <vct-icon icon="copyright-line" />
     {{ fullYear }} Vct Footer
   </footer>
 </template>
