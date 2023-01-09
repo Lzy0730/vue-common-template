@@ -3,7 +3,7 @@
     class="fold-unfold"
     :icon="collapse ? 'menu-unfold-line' : 'menu-fold-line'"
     :style="classObject"
-    @click.native="toggleCollapse"
+    @click="toggleCollapse"
   />
 </template>
 

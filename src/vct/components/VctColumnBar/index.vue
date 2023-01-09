@@ -173,7 +173,6 @@ export default {
       .el-tabs {
         .el-tabs__item {
           padding: 5px !important;
-
           .vct-column-grid {
             width: $base-left-menu-width-min - 10 !important;
             height: $base-left-menu-width-min - 10 !important;

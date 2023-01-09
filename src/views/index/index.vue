@@ -6,12 +6,20 @@
     ipsum?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium,
     perferendis quod! Soluta labore rerum earum saepe nulla quo ex sapiente at
     aut eveniet dolores, accusamus sequi qui ducimus sed? Ducimus.
+    <test-event @click="clickTest"></test-event>
   </div>
 </template>
 
 <script>
+import TestEvent from "@/components/test.vue";
 export default {
+  components: { TestEvent },
   name: "Index",
+  methods: {
+    clickTest() {
+      console.log(11111);
+    },
+  },
 };
 </script>
 
